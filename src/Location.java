@@ -1,14 +1,19 @@
 import java.util.HashMap;
 import java.util.Map;
 public final class Location {
-    final int locationID;
-    public String description;
-    protected Map<String, Integer> exits;
+    private final int locationID;
+    private final String description;
+    private final Map<String, Integer> exits;
     public Location(int locationID, String description, Map<String, Integer>
             exits) {
         this.locationID = locationID;
         this.description = description;
-        this.exits = new HashMap<String, Integer>(exits);
+        if(exits == null){
+            this.exits = new HashMap<String, Integer>();
+        }
+        else {
+            this.exits = new HashMap<String, Integer>(exits);
+        }
         this.exits.put("Q", 0);
     }
     private final void addExit(String direction, int location) {
